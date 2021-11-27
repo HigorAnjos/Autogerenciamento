@@ -1,0 +1,50 @@
+body
+{
+    background-color: #343a40;
+    color: white;
+    padding: 60px 90px 0 90px;
+}
+
+header
+{
+    display: flex;
+    border-bottom: white solid 1px;
+    height: 90px;
+}
+#marge
+{
+    border: white solid 1px;
+    width: 90px;
+    height: 70px;
+    margin-right: 199px;
+    text-align: center ;
+}
+#marge span
+{
+    font-family: Mulish;
+    font-size: 50px;
+    color: #fff;
+
+}
+form
+{
+    width: 200px;
+}
+#cadastrar-materias
+{
+    margin: 15px;
+}
+#conteudo
+{
+    display: flex;
+    
+}
+#cards-professores
+{
+    padding: 30px;
+}
+#row
+{
+    display: flex;
+    justify-content: space-around;
+}
