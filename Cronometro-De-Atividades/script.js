@@ -1,10 +1,19 @@
+//const moment = require("moment");
+
 const clockNow = document.getElementById("clock");
 
-const clock = () =>
-{
+const clock = () => {
   clockNow.innerHTML = moment().format('HH:mm:ss');
 }
 setInterval(clock, 1000);
+
+const initDataBase = (nome) => {
+  const data = [{
+    day: moment().format('L'),
+    time: [], 
+  }]
+  localStorage.setItem(nome, JSON.stringify(data));
+}
 
 const startClock = (e) => {
   let i = 0;
@@ -75,13 +84,33 @@ const setCard = (NomeAtividade) => {
 
   clockssection.appendChild(card);
 
+  initDataBase(NomeAtividade);
 }
+
+
+const insertDataClock = (nome, start, end) => {
+  let data = JSON.parse(localStorage.getItem(nome));
+  console.log(data)
+  let endList = data.length-1;
+  let isToday = (data[endList].day === moment().format('L'))
+  if (isToday)
+  {
+    data[endList].time.push({start, end});
+  }
+  localStorage.setItem(nome, JSON.stringify(data));
+}
+
 window.onload
 {
   setCard('Corse');
   setCard('MinerarSetencas');
   setCard('Ingles');
   setCard('Faculade');
+  setCard('Programacao');
+
+
+  insertDataClock("Faculade", '20:00', '22:00');
+  insertDataClock("Faculade", '23:00', '25:00');
 }
 
 
