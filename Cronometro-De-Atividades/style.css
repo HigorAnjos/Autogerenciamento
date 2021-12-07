@@ -1,0 +1,64 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsl(0, 0%, 4%);
+  flex-wrap: nowrap;
+  
+}
+header .title {
+  text-align: center;
+  color: hsl(0, 0%, 96%);
+  font-family:  'Audiowide', 'Sarpanch', sans-serif;
+  font-size: 3.0rem;
+  width: 300px;
+}
+#add, #addnew{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+body {
+  display: felx;
+  flex-direction: row;
+  background-color: hsl(0, 0%, 4%);
+}
+#clocks-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  justify-content: space-evenly;
+}
+#clocks-section .card {
+  text-align: center;
+  margin: 5px 10px;
+  background-color: black;
+  border-color: hsl(0, 0%, 96%);
+  border-style: dashed;
+  width: 300px;
+}
+#clocks-section .card h2 {
+  text-align: center;
+}
+#clocks-section .card p {
+  color: hsl(0, 0%, 96%);
+  margin-bottom: 2px;
+}
+#clocks-section .card h2 {
+  padding-top: 20px;
+  margin-bottom: 50px;
+  height: 50px;
+  color: hsl(0, 0%, 96%);
+}
+#clocks-section .card-footer button{
+  display: flex;
+  flex-grow: 1;
+  border-radius: 0px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
