@@ -5,11 +5,8 @@ const clock = () =>
   clockNow.innerHTML = moment().format('HH:mm:ss');
 }
 setInterval(clock, 1000);
-const set = (obj) => {
-  console.log(obj.innerHTML = moment().format('HH:mm:ss'));
-}
+
 const startClock = (e) => {
- 
   let i = 0;
   const cards = document.getElementsByClassName('card');
   console.log(e.target.id)
@@ -17,7 +14,7 @@ const startClock = (e) => {
   {
     if (cards[i].childNodes[2].childNodes[0].id === e.target.id)
     {
-      set(cards[i].childNodes[0]);
+      setInterval(() => {cards[i].childNodes[0].innerHTML = moment().format('HH:mm:ss')}, 1000);
     }
   }
 }
