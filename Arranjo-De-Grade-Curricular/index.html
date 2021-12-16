@@ -13,74 +13,49 @@
 </head>
 <body>
     <header>
-        <div id="marge">
-            <span>
-                HS
-            </span>
-        </div>
-
-        <div id="titulo">
-            <h1>Arranjo de Grade Curricular</h1>
+        <div id="hearder-center">
+            <div id="titulo">
+                <h1>Arranjo de Grade Curricular</h1>
+            </div>
         </div>
     </header>
-    <div id="conteudo">
-        <section>
-            <div>
-                <h2>Cadastrar Materias</h2>
-            </div>
-            <form>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Nome da materia</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <main>    
+        <div id="formulario">
+            <section>
+                <div>
+                    <h2>Cadastrar Materias</h2>
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Professor</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                  <span>Horario da aula</span>
-                  <br>
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Primeiro</label>
-                  <br>
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1-2">
-                  <label class="form-check-label" for="exampleCheck1-2">Segundo</label>
-                  <br>
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1-3">
-                  <label class="form-check-label" for="exampleCheck1-3">Terceiro</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-              </form>
-        </section>
-        <section>
-            <div id="cards-professores">
-                <div id="row">
-                    <div class="card text-dark text-white bg-dark mb-5" style="width: 18rem;">
-                        <div class="card-body">
-                          <h5 class="card-title">Special title treatment</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-danger">Remover</a>
-                        </div>
+                <form>
+                    <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nome da materia</label>
+                    <input name ="nomemateria"type="text" class="form-control" id="exampleInputEmail1">
                     </div>
-                    <div class="card text-dark text-white bg-dark mb-5" style="width: 18rem;">
-                        <div class="card-body">
-                          <h5 class="card-title">Special title treatment</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-danger">Remover</a>
-                        </div>
+                    <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Professor</label>
+                    <input name="professor" type="text" class="form-control" id="exampleInputPassword1">
                     </div>
-                    <div class="card text-dark text-white bg-dark mb-5" style="width: 18rem;">
-                        <div class="card-body">
-                          <h5 class="card-title">Special title treatment</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-danger">Remover</a>
-                        </div>
+                    <div class="mb-3 form-check">
+                    <span>Horario da aula</span>
+                    <br>
+                    <input type="radio" value="primeiro" name="horario" class="form-check-input" id="exampleCheck1">
+                    <label for="exampleCheck1" class="form-check-label">Primeiro</label> 
+                    <br>
+                    <input type="radio" value="segundo" name="horario" class="form-check-input" id="exampleCheck1-2">
+                    <label for="exampleCheck1-2" class="form-check-label">Segundo</label>
+                    <br>
+                    <input type="radio" value="terceiro" name="horario" class="form-check-input" id="exampleCheck1-3">
+                    <label for="exampleCheck1-3" class="form-check-label" >Terceiro</label>
                     </div>
-                </div>
-                
-            </div>
-        </section>  
-    </div>
-        
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </section>
+        </div>
+        <div id="cards-container">
+            <section>
+
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>

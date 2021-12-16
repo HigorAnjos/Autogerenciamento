@@ -2,15 +2,26 @@ body
 {
     background-color: #343a40;
     color: white;
-    padding: 60px 90px 0 90px;
 }
 
 header
 {
     display: flex;
-    border-bottom: white solid 1px;
-    height: 90px;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
 }
+#hearder-center
+{
+    display: flex;
+    height: 90px;
+    justify-content: space-around;
+    align-items: center;
+    width: 1000px;
+    border-bottom: white solid 2px;
+    margin: 50px 0;
+}
+
 #marge
 {
     border: white solid 1px;
@@ -26,21 +37,22 @@ header
     color: #fff;
 
 }
-form
-{
-    width: 200px;
-}
-#cadastrar-materias
-{
-    margin: 15px;
-}
-#conteudo
+
+main
 {
     display: flex;
-    
 }
-#cards-professores
+#formulario
 {
+    display: flex;
+    border: white solid 2px;
+    width: 375px;
+    padding: 5px 10px;
+}
+#cards-container
+{
+    border:aquamarine solid 2px;
+    width: 1070px;
     padding: 30px;
 }
 #row
