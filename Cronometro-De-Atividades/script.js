@@ -110,7 +110,6 @@ window.onload
 
 
   insertDataClock("Faculade", '20:00', '22:00');
-  insertDataClock("Faculade", '23:00', '25:00');
 }
 
 
