@@ -1,4 +1,5 @@
 //const moment = require("moment");
+var PAUSE = false;
 
 const clockNow = document.getElementById("clock");
 
@@ -23,12 +24,24 @@ const startClock = (e) => {
   {
     if (cards[i].childNodes[2].childNodes[0].id === e.target.id)
     {
-      setInterval(() => {cards[i].childNodes[0].innerHTML = moment().format('HH:mm:ss')}, 1000);
+      const beginning = moment();
+      setInterval(() => {
+        if (PAUSE) {
+          insertDataClock("Faculade", '20:00', '22:00');
+          return 0;
+         }
+        let horas = moment().diff(beginning, 'hour');
+        let minutos = moment().diff(beginning, 'minute');
+        let segundos =  moment().diff(beginning, 'second');
+        cards[i].childNodes[0].innerHTML = `${horas}:${minutos}:${segundos}`;
+      }, 1000);
     }
   }
 }
 
 const pauseClock = (e) => {
+  console.log("Pause")
+  PAUSE = true;
 
 }
 
@@ -90,7 +103,6 @@ const setCard = (NomeAtividade) => {
 
 const insertDataClock = (nome, start, end) => {
   let data = JSON.parse(localStorage.getItem(nome));
-  console.log(data)
   let endList = data.length-1;
   let isToday = (data[endList].day === moment().format('L'))
   if (isToday)
