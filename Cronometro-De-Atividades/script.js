@@ -1,5 +1,5 @@
 //const moment = require("moment");
-var PAUSE = false;
+let cron;
 
 const clockNow = document.getElementById("clock");
 
@@ -17,7 +17,7 @@ const initDataBase = (nome) => {
 }
 
 const startClock = (e) => {
-  let i = 0;
+  pauseClock();
   const cards = document.getElementsByClassName('card');
   console.log(e.target.id)
   for(let i = 0; i < cards.length; i+=1)
@@ -25,11 +25,7 @@ const startClock = (e) => {
     if (cards[i].childNodes[2].childNodes[0].id === e.target.id)
     {
       const beginning = moment();
-      setInterval(() => {
-        if (PAUSE) {
-          insertDataClock("Faculade", '20:00', '22:00');
-          return 0;
-         }
+      cron = setInterval(() => {
         let horas = moment().diff(beginning, 'hour');
         let minutos = moment().diff(beginning, 'minute');
         let segundos =  moment().diff(beginning, 'second');
@@ -41,12 +37,21 @@ const startClock = (e) => {
 
 const pauseClock = (e) => {
   console.log("Pause")
-  PAUSE = true;
+  clearInterval(cron);
 
 }
 
 const deleteClock = (e) => {
-
+  pauseClock();
+  const cards = document.getElementsByClassName('card');
+  console.log(e.target.id)
+  for(let i = 0; i < cards.length; i+=1)
+  {
+    if (cards[i].childNodes[2].childNodes[0].id === e.target.id)
+    {
+      cards[i].childNodes[0].innerHTML = '00:00:00';
+    }
+  }
 }
 
 const setCard = (NomeAtividade) => {
@@ -59,20 +64,24 @@ const setCard = (NomeAtividade) => {
   const btnStart = document.createElement ('button');
   const btnPause = document.createElement ('button');
   const btnDelete = document.createElement ('button');
+  const btnStorage = document.createElement ('button');
 
   btnStart.addEventListener('click', startClock);
   btnPause.addEventListener('click', pauseClock);
   btnDelete.addEventListener('click', deleteClock);
+  btnStorage.addEventListener('click', storageClock);
 
   h2.innerHTML = '00:00:00';
   p.innerHTML = `${NomeAtividade}`;
   btnStart.innerHTML = 'Start';
   btnPause.innerHTML = 'Pause';
   btnDelete.innerHTML = 'Delete';
+  btnStorage.innerHTML = 'Storage';
 
   btnStart.id = NomeAtividade;
   btnPause.id = NomeAtividade;
   btnDelete.id = NomeAtividade;
+  btnStorage.id = NomeAtividade;
 
   h2.id = 'display';
 
@@ -87,10 +96,13 @@ const setCard = (NomeAtividade) => {
   btnPause.classList.add('is-info');
   btnDelete.classList.add('button');
   btnDelete.classList.add('is-danger');
+  btnStorage.classList.add('button');
+  btnStorage.classList.add('is-primary');
 
   footer.appendChild(btnStart);
   footer.appendChild(btnPause);
   footer.appendChild(btnDelete);
+  footer.appendChild(btnStorage);
   card.appendChild(h2);
   card.appendChild(p);
   card.appendChild(footer);
@@ -100,6 +112,7 @@ const setCard = (NomeAtividade) => {
   initDataBase(NomeAtividade);
 }
 
+const storageClock = () => {};
 
 const insertDataClock = (nome, start, end) => {
   let data = JSON.parse(localStorage.getItem(nome));
@@ -131,78 +144,3 @@ window.onload
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/// Secao adicionar novo cronometro
-/* Formulario
-const form = () => {
-  const addNew = document.getElementById('addnew');
-
-  const form = document.createElement ('form');
-  const labelAtv = document.createElement ('span');
-  const labelDesc = document.createElement ('span');
-  const atividade = document.createElement ('input');
-  const desc = document.createElement('textarea');
-
-  labelAtv.innerHTML = 'Nome da Atividade:';
-  labelDesc.innerHTML = 'Descricao:';
-  atividade.type = "text";
- 
-  form.appendChild(labelAtv);
-  form.appendChild(atividade);
-  form.appendChild(labelDesc);
-  form.appendChild(desc);
-  
-  addNew.appendChild(form);
-}
-const btnAdd = document.getElementById('add');
-btnAdd.addEventListener ('click', form);
-*/
