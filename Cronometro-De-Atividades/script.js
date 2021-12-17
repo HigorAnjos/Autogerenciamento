@@ -31,7 +31,7 @@ const startClock = (e) => {
         let horas = moment().diff(beginning, 'hour');
         let minutos = moment().diff(beginning, 'minute');
         let segundos =  moment().diff(beginning, 'second');
-        cards[i].childNodes[0].innerHTML = `${horas}:${minutos}:${segundos}`;
+        cards[i].childNodes[0].innerHTML = `${returnFormat(horas)}:${returnFormat(minutos)}:${returnFormat(segundos)}`;
       }, 1000);
     }
   }
@@ -131,6 +131,10 @@ const insertDataClock = (nome, start, end) => {
     data[endList].time.push({start, end});
   }
   localStorage.setItem(nome, JSON.stringify(data));
+}
+
+function returnFormat(input) {
+  return input > 9 ? input : `0${input}`
 }
 
 window.onload
