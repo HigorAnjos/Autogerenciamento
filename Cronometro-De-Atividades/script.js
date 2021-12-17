@@ -11,17 +11,22 @@ const clock = () => {
 setInterval(clock, 1000);
 
 const initDataBase = (nome) => {
-  const data = [{
-    day: moment().format('L'),
-    time: [], 
-  }]
-  localStorage.setItem(nome, JSON.stringify(data));
+  const isNewBD = !JSON.parse(localStorage.getItem(nome));
+  if(isNewBD)
+  {
+    const data = [{
+      day: moment().format('L'),
+      time: [], 
+    }]
+    localStorage.setItem(nome, JSON.stringify(data));
+
+  }  
 }
 
 const startClock = (e) => {
   pauseClock();
   const cards = document.getElementsByClassName('card');
-  console.log(e.target.id)
+  console.log('Start')
   for(let i = 0; i < cards.length; i+=1)
   {
     if (cards[i].childNodes[2].childNodes[0].id === e.target.id)
@@ -47,7 +52,7 @@ const pauseClock = (e) => {
 const deleteClock = (e) => {
   pauseClock();
   const cards = document.getElementsByClassName('card');
-  console.log(e.target.id)
+  console.log('Delete')
   for(let i = 0; i < cards.length; i+=1)
   {
     if (cards[i].childNodes[2].childNodes[0].id === e.target.id)
