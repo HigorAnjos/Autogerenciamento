@@ -1,5 +1,7 @@
 //const moment = require("moment");
 let cron;
+let beginning;
+let end;
 
 const clockNow = document.getElementById("clock");
 
@@ -24,7 +26,7 @@ const startClock = (e) => {
   {
     if (cards[i].childNodes[2].childNodes[0].id === e.target.id)
     {
-      const beginning = moment();
+      beginning = moment();
       cron = setInterval(() => {
         let horas = moment().diff(beginning, 'hour');
         let minutos = moment().diff(beginning, 'minute');
@@ -37,6 +39,7 @@ const startClock = (e) => {
 
 const pauseClock = (e) => {
   console.log("Pause")
+  end = moment();
   clearInterval(cron);
 
 }
@@ -52,6 +55,11 @@ const deleteClock = (e) => {
       cards[i].childNodes[0].innerHTML = '00:00:00';
     }
   }
+}
+
+const storageClock = (e) => {
+console.log('storage');
+insertDataClock(e.target.id,beginning,end);
 }
 
 const setCard = (NomeAtividade) => {
@@ -112,7 +120,7 @@ const setCard = (NomeAtividade) => {
   initDataBase(NomeAtividade);
 }
 
-const storageClock = () => {};
+
 
 const insertDataClock = (nome, start, end) => {
   let data = JSON.parse(localStorage.getItem(nome));
@@ -133,8 +141,6 @@ window.onload
   setCard('Faculade');
   setCard('Programacao');
 
-
-  insertDataClock("Faculade", '20:00', '22:00');
 }
 
 
