@@ -19,10 +19,10 @@ const initDataBase = (nome) => {
       time: [], 
     }]
     localStorage.setItem(nome, JSON.stringify(data));
-
   }  
 }
 
+/**Funcoes dos Butoes */
 const startClock = (e) => {
   pauseClock();
   const cards = document.getElementsByClassName('card');
@@ -63,8 +63,8 @@ const deleteClock = (e) => {
 }
 
 const storageClock = (e) => {
-console.log('storage');
-insertDataClock(e.target.id,beginning,end);
+  console.log('storage');
+  insertDataClock(e.target.id,beginning,end);
 }
 
 const setCard = (NomeAtividade) => {
