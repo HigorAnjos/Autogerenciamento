@@ -51,6 +51,10 @@ main
 }
 #cards-container
 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     border:aquamarine solid 2px;
     width: 1070px;
     padding: 30px;
@@ -59,4 +63,10 @@ main
 {
     display: flex;
     justify-content: space-around;
+}
+.margin-card {
+    margin: 15px;
+}
+.card-title, .card-subtitle, .card-text {
+    color: #262626;
 }
