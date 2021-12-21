@@ -287,8 +287,64 @@ function makeObjTable (listaUnica)
 }
 function newTable (obj)
 {
-    //console.log(obj[0].materia);
-    /** */
+console.log(obj[0].materia);
+
+    //LISTA DE MATERIAS
+    const space =  document.createElement('div');
+    const card = document.createElement('div');
+    const ul = document.createElement('ul');
+
+    const li0 = document.createElement('li');
+    const li1 = document.createElement('li');
+    const li2 = document.createElement('li');
+    const li3 = document.createElement('li');
+    const li4 = document.createElement('li');   
+
+    /*Add class*/
+    space.classList.add('space');
+    card.classList.add('card');
+    card.style = "width: 18rem";
+    ul.classList.value = 'list-group list-group-flush';
+
+    li0.classList.add('list-group-item');
+    li1.classList.add('list-group-item');
+    li2.classList.add('list-group-item');
+    li3.classList.add('list-group-item');
+    li4.classList.add('list-group-item');
+
+    /*Add info*/
+    li0.innerHTML = obj[0].materia;
+    li1.innerHTML = obj[1].materia;
+    li2.innerHTML = obj[2].materia;
+    li3.innerHTML = obj[3].materia;
+    li4.innerHTML = obj[4].materia;
+
+    /*Make Lista tateral a tabela */
+    ul.appendChild(li0);
+    ul.appendChild(li1);
+    ul.appendChild(li2);
+    ul.appendChild(li3);
+    ul.appendChild(li4);
+
+    card.appendChild(ul);
+
+    /*TABELA DE HORARIOS */
+    // Thead
+    const table = document.createElement('table');
+
+    const thead = document.createElement('thead');
+    const trpai = document.createElement('tr');
+    const horario = document.createElement('th');
+    const seg = document.createElement('th');
+    const ter = document.createElement('th');
+    const qua = document.createElement('th');
+    const qui = document.createElement('th');
+    const sex = document.createElement('th');
+
+    /*Add class*/
+    
+
+
 
 }
 
