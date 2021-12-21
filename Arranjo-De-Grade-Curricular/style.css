@@ -64,6 +64,11 @@ header
     display: flex;
     justify-content: space-around;
 }
+.space{
+    display: flex;
+    justify-content: space-around;
+    margin: 200px;
+}
 .margin-card {
     margin: 15px;
 }
