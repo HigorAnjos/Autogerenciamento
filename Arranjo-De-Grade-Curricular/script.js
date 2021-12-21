@@ -25,15 +25,52 @@ function objProf (e)
 
 function newCard (obj)
 {
-/**
- * <div class="card margin-card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Calex</h5>
-            <h6 class="card-subtitle mb-2 text-muted">ARQUITETURA DE COMPUTADORES II</h6>
-            <p class="card-text">seg: 07:15 - 08:45 <br>ter: 09:00 - 10:30 <br>qui: 10:45 - 12:15 </p>
-        </div>
-    </div>
- */
+    const cardContainer = document.getElementById('cards-container');
+
+    const card = document.createElement('div');
+    const cardBody = document.createElement('div');
+    const title = document.createElement('h5');
+    const subTitle = document.createElement('h6');
+    const p = document.createElement('p');
+
+    card.classList.value = 'card margin-card';
+    card.style = 'width: 18rem';
+    cardBody.classList.value = 'card-body';
+    title.classList.value = 'card-title';
+    subTitle.classList.value = 'card-subtitle mb-2 text-muted'; 
+    p.classList.value = 'card-text';
+    
+    title.innerHTML = 'Calex-new';
+    subTitle.innerHTML = 'ARQUITETURA DE COMPUTADORES II';
+    p.innerHTML = newCard_str_smna(obj);
+
+    cardBody.appendChild(title);
+    cardBody.appendChild(subTitle);
+    cardBody.appendChild(p);
+    card.appendChild(cardBody);
+
+    console.log(card);
+    cardContainer.appendChild(card);
+}
+function newCard_str_smna(card)
+{
+    let str = '';
+    for(key in card.semanaHora)
+    {
+        if (card.semanaHora[key] === 1)
+        {
+            str += `${key}: 07:15 - 08:45 <br>`;
+        }
+        if (card.semanaHora[key] === 17)
+        {
+            str += `${key}: 09:00 - 10:30 <br>`;
+        }
+        if (card.semanaHora[key] === 73)
+        {
+            str += `${key}: 10:45 - 12:15 <br>`;
+        }
+    }
+    return str;
 }
 function smna (formData)
 {
