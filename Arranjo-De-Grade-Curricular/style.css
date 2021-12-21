@@ -49,7 +49,7 @@ header
     width: 375px;
     padding: 5px 10px;
 }
-#cards-container
+#cardscontainer
 {
     display: flex;
     flex-direction: row;
