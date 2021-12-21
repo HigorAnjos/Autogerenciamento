@@ -1,5 +1,5 @@
 var form = document.querySelector("form");
-var palavra = Array();
+var palavra = [];
 var alf = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 var alf_I = -1;
 
@@ -40,8 +40,8 @@ function newCard (obj)
     subTitle.classList.value = 'card-subtitle mb-2 text-muted'; 
     p.classList.value = 'card-text';
     
-    title.innerHTML = 'Calex-new';
-    subTitle.innerHTML = 'ARQUITETURA DE COMPUTADORES II';
+    title.innerHTML = obj.prof;
+    subTitle.innerHTML = obj.materia;
     p.innerHTML = newCard_str_smna(obj);
 
     cardBody.appendChild(title);
@@ -101,16 +101,17 @@ function getNome()
 }
 
 /**Buscar Arranjo */
-palavra = [
-    {nome:"A", materia:"INTERFACE HOMEM-MÁQUINA" , cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}},
-    {nome:"B", materia:"REDES DE COMPUTADORES II" ,cred: 4, semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}},
-    {nome:"C", materia:"ARQUITETURA DE COMPUTADORES II" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 0, quinta: 17, sexta: 0}}, 
-    {nome:"D", materia:"CIRCUITOS ELÉTRICOS I" ,cred: 4, semanaHora: {segunda: 1, terca: 1, quarta: 0, quinta: 0, sexta: 1}},
-    {nome:"E", materia:"Equações Diferenciais" ,cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}},
-    {nome:"K", materia:"SISTEMAS OPERACIONAIS I" ,cred: 4, semanaHora: {segunda: 1, terca: 0, quarta: 0, quinta: 1, sexta: 0}},
-    {nome:"L", materia:"PROJETO E ANÁLISE DE ALGORÍTMOS II" ,cred: 4, semanaHora: {segunda: 0, terca: 1, quarta: 0, quinta: 0, sexta: 1}},
-    {nome:"M", materia:"LINGUAGENS FORMAIS E AUTÔMATOS" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}},
-    {nome:"N", materia:"VALIDAÇÃO E TESTES DE SISTEMAS" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}}];
+/*
+palavra.push({nome:"A", materia:"INTERFACE HOMEM-MÁQUINA" , cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
+palavra.push({nome:"B", materia:"REDES DE COMPUTADORES II" ,cred: 4, semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}});
+palavra.push({nome:"C", materia:"ARQUITETURA DE COMPUTADORES II" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 0, quinta: 17, sexta: 0}});
+palavra.push({nome:"D", materia:"CIRCUITOS ELÉTRICOS I" ,cred: 4, semanaHora: {segunda: 1, terca: 1, quarta: 0, quinta: 0, sexta: 1}});
+palavra.push({nome:"E", materia:"Equações Diferenciais" ,cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
+palavra.push({nome:"K", materia:"SISTEMAS OPERACIONAIS I" ,cred: 4, semanaHora: {segunda: 1, terca: 0, quarta: 0, quinta: 1, sexta: 0}});
+palavra.push({nome:"L", materia:"PROJETO E ANÁLISE DE ALGORÍTMOS II" ,cred: 4, semanaHora: {segunda: 0, terca: 1, quarta: 0, quinta: 0, sexta: 1}});
+palavra.push({nome:"M", materia:"LINGUAGENS FORMAIS E AUTÔMATOS" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
+palavra.push({nome:"N", materia:"VALIDAÇÃO E TESTES DE SISTEMAS" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
+*/
 
 const arranjosClick =  document.getElementById('btnarranjo');
 
@@ -293,4 +294,26 @@ for(let i=0; i< listaUnica.length; i++)
     
     console.log(`+---------------------------------+`)
 } 
+}
+
+window.onload = function ()
+{
+    palavra = getStorage();
+    
+    //initCards();
+};
+
+const btnstorage = document.getElementById('storage');
+btnstorage.addEventListener('click', storage);
+
+function storage ()
+{
+    localStorage.setItem('palavra', JSON.stringify(palavra))
+}
+
+function getStorage ()
+{
+    let storage = localStorage.getItem('palavra');
+    storage = JSON.parse(storage);
+    return storage;
 }

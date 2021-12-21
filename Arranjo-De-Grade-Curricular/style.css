@@ -67,7 +67,7 @@ header
 .space{
     display: flex;
     justify-content: space-around;
-    margin: 200px;
+    margin: 20px;
 }
 .margin-card {
     margin: 15px;
