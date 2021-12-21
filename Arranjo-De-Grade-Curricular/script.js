@@ -19,7 +19,6 @@ function objProf (e)
 
     palavra.push (newObj);
     form.reset();
-    console.log(newObj)
     newCard (newObj);
 }
 
@@ -49,7 +48,6 @@ function newCard (obj)
     cardBody.appendChild(p);
     card.appendChild(cardBody);
 
-    console.log(card);
     cardContainer.appendChild(card);
 }
 function newCard_str_smna(card)
@@ -256,33 +254,44 @@ while(listaMaterias.length)
     }
 }
 
-/// Tabalhando na impressao
-
-for(let i=0; i< listaUnica.length; i++)
+const objTable = makeObjTable(listaUnica);
+newTable(objTable[0]);
+for (let i = 0; i< objTable.length; i++)
 {
-    let creditosTotal = 0
-    console.log(`+---------------------------------+`)
-    console.log(`Possivel Grade ${i+1} cod: ${listaUnica[i]}`)
-    console.log(`----------------`)
-    
-    for(let k=0; k< listaUnica[i].length; k++)
+    //newTable(objTable[i]);
+}
+
+}
+function makeObjTable (listaUnica)
+{
+    let allOp = [];
+    let op = [];
+
+    for(let i=0; i< listaUnica.length; i++)
     {
-        for(let j=0; j< palavra.length; j++)
+        for(let k=0; k< listaUnica[i].length; k++)
         {
-            if(listaUnica[i][k] === palavra[j].nome)
+            for(let j=0; j< palavra.length; j++)
             {
-                console.log(palavra[j].materia)
-                creditosTotal += palavra[j].cred
-                
+                if(listaUnica[i][k] === palavra[j].nome)
+                {
+                    op.push(palavra[j])
+                }
             }
         }
+        
+        allOp.push(op);
+        op = [];
     }
-    console.log(`------`)
-    console.log(`Cretitos Total ${creditosTotal}`)
-    
-    console.log(`+---------------------------------+`)
-} 
+    return allOp;
 }
+function newTable (obj)
+{
+    //console.log(obj[0].materia);
+    /** */
+
+}
+
 
 window.onload = function ()
 {
