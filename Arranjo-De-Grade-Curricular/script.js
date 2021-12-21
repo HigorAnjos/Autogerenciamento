@@ -328,8 +328,7 @@ console.log(obj[0].materia);
 
     card.appendChild(ul);
 
-    /*TABELA DE HORARIOS */
-    // Thead
+    /*TABELA Thead*/
     const table = document.createElement('table');
 
     const thead = document.createElement('thead');
@@ -342,7 +341,28 @@ console.log(obj[0].materia);
     const sex = document.createElement('th');
 
     /*Add class*/
-    
+    table.classList.value = 'table table-borderless table-light';
+    horario.scope = "col";
+    seg.scope = "col";
+    ter.scope = "col";
+    qua.scope = "col";
+    qui.scope = "col";
+    sex.scope = "col";
+
+    /*Make Thead */
+    trpai.appendChild(horario);
+    trpai.appendChild(seg);
+    trpai.appendChild(ter);
+    trpai.appendChild(qua);
+    trpai.appendChild(qui);
+    trpai.appendChild(sex);
+
+    thead.appendChild(trpai) // tabela lateral
+
+    /*TABELA DE HORARIOS tbody */
+    const tbody = document.createElement('tbody');
+
+    // ROW 1
 
 
 
