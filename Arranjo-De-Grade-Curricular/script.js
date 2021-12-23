@@ -598,13 +598,18 @@ function initCards ()
 
 function setData ()
 {
-palavra.push({nome:"A", materia:"INTERFACE HOMEM-MÁQUINA" , prof:"calex",cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
-palavra.push({nome:"B", materia:"REDES DE COMPUTADORES II", prof:"calex" ,cred: 4, semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}});
-palavra.push({nome:"C", materia:"ARQUITETURA DE COMPUTADORES II", prof:"calex" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 0, quinta: 17, sexta: 0}});
-palavra.push({nome:"D", materia:"CIRCUITOS ELÉTRICOS I" ,cred: 4, prof:"calex" , semanaHora: {segunda: 1, terca: 1, quarta: 0, quinta: 0, sexta: 1}});
-palavra.push({nome:"E", materia:"Equações Diferenciais" ,cred: 4, prof:"calex" , semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
-palavra.push({nome:"K", materia:"SISTEMAS OPERACIONAIS I" ,cred: 4, prof:"calex" , semanaHora: {segunda: 1, terca: 0, quarta: 0, quinta: 1, sexta: 0}});
-palavra.push({nome:"L", materia:"PROJETO E ANÁLISE DE ALGORÍTMOS II", prof:"calex"  ,cred: 4, semanaHora: {segunda: 0, terca: 1, quarta: 0, quinta: 0, sexta: 1}});
-palavra.push({nome:"M", materia:"LINGUAGENS FORMAIS E AUTÔMATOS", prof:"calex"  ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
-palavra.push({nome:"N", materia:"VALIDAÇÃO E TESTES DE SISTEMAS", prof:"calex"  ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
+palavra.push({nome:"A", materia:"INTERFACE HOMEM-MÁQUINA" , prof:"Prof desconhecido",cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
+palavra.push({nome:"B", materia:"FILOSOFIA, TECNOLOGIA E ÉTICA", prof:"Prof desconhecido" ,cred: 4, semanaHora: {segunda: 17, terca: 0, quarta: 0, quinta: 17, sexta: 0}});
+palavra.push({nome:"C", materia:"LINGUAGENS FORMAIS E AUTÔMATOS", prof:"Prof desconhecido" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
+palavra.push({nome:"D", materia:"CIRCUITOS ELÉTRICOS I x" ,cred: 4, prof:"Prof desconhecido" , semanaHora: {segunda: 0, terca: 1, quarta: 1, quinta: 0, sexta: 1}});
+palavra.push({nome:"E", materia:"TEOLOGIA, CIÊNCIAS EXATAS E TECNOLÓGICAS" ,cred: 4, prof:"Prof desconhecido" , semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}});
+palavra.push({nome:"K", materia:"EQUAÇÕES DIFERENCIAIS" ,cred: 4, prof:"Prof desconhecido" , semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
+palavra.push({nome:"L", materia:"GERÊNCIA DE PROJETOS DE SISTEMAS", prof:"Prof desconhecido"  ,cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 1}});
+palavra.push({nome:"M", materia:"VALIDAÇÃO E TESTES DE SISTEMAS", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
+palavra.push({nome:"N", materia:"COMPUTAÇÃO GRÁFICA", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
+palavra.push({nome:"O", materia:"INTELIGÊNCIA ARTIFICIAL", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 1, terca: 0, quarta: 0, quinta: 1, sexta: 0}});
+palavra.push({nome:"P", materia:"SISTEMAS DISTRIBUÍDOS", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 0, terca: 1, quarta: 0, quinta: 0, sexta: 1}});
+palavra.push({nome:"Q", materia:"PROCESSAMENTO DIGITAL DE IMAGENS", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}});
+palavra.push({nome:"Q", materia:"METODOLOGIA DA PESQUISA NA COMPUTAÇÃO", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 73, terca: 0, quarta: 0, quinta: 73, sexta: 0}});
+
 }
