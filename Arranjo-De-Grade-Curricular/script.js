@@ -107,14 +107,13 @@ arranjosClick.addEventListener('click', arranjo);
 function arranjo ()
 {
     function distintos (A, B, C, D, E)
-{
-    if(A !== B && A !== C && A !== D && A !== E && B !== C && B !== D  && B !== E && C !== D  && C !== E && D !== E )
     {
-        return true
+        if(A !== B && A !== C && A !== D && A !== E && B !== C && B !== D  && B !== E && C !== D  && C !== E && D !== E )
+        {
+            return true
+        }
+        return false
     }
-    return false
-}
-
 
 function validarHorario (A, B, C, D, E)
 {
@@ -255,10 +254,10 @@ while(listaMaterias.length)
 }
 
 const objTable = makeObjTable(listaUnica);
-newTable(objTable[0]);
+
 for (let i = 0; i< objTable.length; i++)
 {
-    //newTable(objTable[i]);
+    newTable(objTable[i]);
 }
 
 }
@@ -287,10 +286,8 @@ function makeObjTable (listaUnica)
 }
 function newTable (obj)
 {
-console.log(obj[0].materia);
-
     //LISTA DE MATERIAS
-    const space =  document.createElement('div');
+
     const card = document.createElement('div');
     const ul = document.createElement('ul');
 
@@ -301,7 +298,6 @@ console.log(obj[0].materia);
     const li4 = document.createElement('li');   
 
     /*Add class*/
-    space.classList.add('space');
     card.classList.add('card');
     card.style = "width: 18rem";
     ul.classList.value = 'list-group list-group-flush';
@@ -313,11 +309,11 @@ console.log(obj[0].materia);
     li4.classList.add('list-group-item');
 
     /*Add info*/
-    li0.innerHTML = obj[0].materia;
-    li1.innerHTML = obj[1].materia;
-    li2.innerHTML = obj[2].materia;
-    li3.innerHTML = obj[3].materia;
-    li4.innerHTML = obj[4].materia;
+    li0.innerHTML = `${obj[0].materia} <br> cred: ${obj[0].cred}`;
+    li1.innerHTML = `${obj[1].materia} <br> cred: ${obj[1].cred}`;
+    li2.innerHTML = `${obj[2].materia} <br> cred: ${obj[2].cred}`;
+    li3.innerHTML = `${obj[3].materia} <br> cred: ${obj[3].cred}`;
+    li4.innerHTML = `${obj[4].materia} <br> cred: ${obj[4].cred}`;
 
     /*Make Lista tateral a tabela */
     ul.appendChild(li0);
@@ -391,6 +387,7 @@ console.log(obj[0].materia);
     });
 
     // ROW 3
+
     const row3 = obj.filter(({ semanaHora }) => {
         for (key in semanaHora)
         {
@@ -400,10 +397,6 @@ console.log(obj[0].materia);
             }
         }
     });
-
-    console.log('row1',row1);
-    console.log('row2',row2);
-    console.log('row3',row3);
 
 
     // ROW 1 - Primeiro horario
@@ -433,9 +426,6 @@ console.log(obj[0].materia);
     trrow1.appendChild(tdsex);
 
 
-    /*TABELA DE HORARIOS tbody */
-    const tbody = document.createElement('tbody');
-
     // ROW 2 - Segundo horario
     const trrow2 = document.createElement('tr');
     const throw2 = document.createElement('th');
@@ -462,9 +452,88 @@ console.log(obj[0].materia);
     trrow2.appendChild(tdqui);
     trrow2.appendChild(tdsex);
 
+    // ROW 3 - Segundo horario
+    const trrow3 = document.createElement('tr');
+    const throw3 = document.createElement('th');
+    tdseg = document.createElement('td');
+    tdter = document.createElement('td');
+    tdqua = document.createElement('td');
+    tdqui = document.createElement('td');
+    tdsex = document.createElement('td');
 
+    throw3.scope = "row";
+    throw3.innerHTML = '3º';
+
+    colorTable (tdseg, row3, obj, 'segunda', 73);
+    colorTable (tdter, row3, obj, 'terca', 73);
+    colorTable (tdqua, row3, obj, 'quarta', 73);
+    colorTable (tdqui, row3, obj, 'quinta', 73);
+    colorTable (tdsex, row3, obj, 'sexta', 73);
+
+    ///Montando row 3
+    trrow3.appendChild(throw3);
+    trrow3.appendChild(tdseg);
+    trrow3.appendChild(tdter);
+    trrow3.appendChild(tdqua);
+    trrow3.appendChild(tdqui);
+    trrow3.appendChild(tdsex);
+
+    /** Ultima linha */
+
+    const trl = document.createElement('tr');
+    const thl = document.createElement('th');
+    const td1 = document.createElement('td');
+    const td2 = document.createElement('td');
+    const td3 = document.createElement('td');
+    const td4 = document.createElement('td');
+    const td5 = document.createElement('td');
+
+    // Add conf
+    thl.scope = "row";
+    td3.innerHTML = `Total de creditos: <b>${totalCred(row1, row2, row3)}</b>`;
     
+    // construindo utlima linha
+    trl.appendChild(thl);
+    trl.appendChild(td1);
+    trl.appendChild(td2);
+    trl.appendChild(td3);
+    trl.appendChild(td4);
+    trl.appendChild(td5);
 
+
+
+    /*TABELA DE HORARIOS tbody */
+    const opContainer = document.getElementById('opcoes-container');
+
+    const tbody = document.createElement('tbody');
+    tbody.appendChild(trrow1);
+    tbody.appendChild(trrow2);
+    tbody.appendChild(trrow3);
+    tbody.appendChild(trl);
+
+    const space =  document.createElement('div');
+    space.classList.add('space');
+
+    space.appendChild(card);
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    space.appendChild(table);
+
+    opContainer.appendChild(space)
+
+}
+
+function totalCred (row1, row2, row3) {
+
+    let arr1 = row1.map(({ cred }) => cred);
+
+    let arr2 = row2.map(({ cred }) => cred);
+
+    let arr3 = row3.map(({ cred }) => cred);
+
+    let arr = [...arr1, ...arr2, ...arr3];
+
+    return arr.reduce((acc, cv) => acc+cv, 0);  
 
 }
 
