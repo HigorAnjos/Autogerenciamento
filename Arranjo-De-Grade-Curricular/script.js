@@ -349,6 +349,14 @@ console.log(obj[0].materia);
     qui.scope = "col";
     sex.scope = "col";
 
+    /* Labels */
+    horario.innerHTML = "horarios";
+    seg.innerHTML = "seg";
+    ter.innerHTML = "ter";
+    qua.innerHTML = "qua";
+    qui.innerHTML = "qui";
+    sex.innerHTML = "sex";
+
     /*Make Thead */
     trpai.appendChild(horario);
     trpai.appendChild(seg);
@@ -359,12 +367,128 @@ console.log(obj[0].materia);
 
     thead.appendChild(trpai) // tabela lateral
 
+    /* filtrar pelos horarios 1, 2, 3 */
+    // ROW 1
+    const row1 = obj.filter(({ semanaHora }) => {
+        for (key in semanaHora)
+        {
+            if(semanaHora[key] == 1)
+            {
+                return true;
+            }
+        }
+    });
+
+    // ROW 2
+    const row2 = obj.filter(({ semanaHora }) => {
+        for (key in semanaHora)
+        {
+            if(semanaHora[key] == 17)
+            {
+                return true;
+            }
+        }
+    });
+
+    // ROW 3
+    const row3 = obj.filter(({ semanaHora }) => {
+        for (key in semanaHora)
+        {
+            if (semanaHora[key] == 73)
+            {
+                return true;
+            }
+        }
+    });
+
+    console.log('row1',row1);
+    console.log('row2',row2);
+    console.log('row3',row3);
+
+
+    // ROW 1 - Primeiro horario
+    const trrow1 = document.createElement('tr');
+    const throw1 = document.createElement('th');
+    let tdseg = document.createElement('td');
+    let tdter = document.createElement('td');
+    let tdqua = document.createElement('td');
+    let tdqui = document.createElement('td');
+    let tdsex = document.createElement('td');
+
+    throw1.scope = "row";
+    throw1.innerHTML = '1º';
+
+    colorTable (tdseg, row1, obj, 'segunda', 1);
+    colorTable (tdter, row1, obj, 'terca', 1);
+    colorTable (tdqua, row1, obj, 'quarta', 1);
+    colorTable (tdqui, row1, obj, 'quinta', 1);
+    colorTable (tdsex, row1, obj, 'sexta', 1);
+
+    ///Montando row 1 
+    trrow1.appendChild(throw1);
+    trrow1.appendChild(tdseg);
+    trrow1.appendChild(tdter);
+    trrow1.appendChild(tdqua);
+    trrow1.appendChild(tdqui);
+    trrow1.appendChild(tdsex);
+
+
     /*TABELA DE HORARIOS tbody */
     const tbody = document.createElement('tbody');
 
-    // ROW 1
+    // ROW 2 - Segundo horario
+    const trrow2 = document.createElement('tr');
+    const throw2 = document.createElement('th');
+    tdseg = document.createElement('td');
+    tdter = document.createElement('td');
+    tdqua = document.createElement('td');
+    tdqui = document.createElement('td');
+    tdsex = document.createElement('td');
+
+    throw2.scope = "row";
+    throw2.innerHTML = '2º';
+
+    colorTable (tdseg, row2, obj, 'segunda', 17);
+    colorTable (tdter, row2, obj, 'terca', 17);
+    colorTable (tdqua, row2, obj, 'quarta', 17);
+    colorTable (tdqui, row2, obj, 'quinta', 17);
+    colorTable (tdsex, row2, obj, 'sexta', 17);
+
+    ///Montando row 2
+    trrow2.appendChild(throw2);
+    trrow2.appendChild(tdseg);
+    trrow2.appendChild(tdter);
+    trrow2.appendChild(tdqua);
+    trrow2.appendChild(tdqui);
+    trrow2.appendChild(tdsex);
 
 
+    
+
+
+}
+
+function colorTable (element, row, obj, strSemana, valueSemana)
+{
+    let aux = row.filter((obj) => {
+        let { semanaHora } = obj;
+        for (key in semanaHora)
+        {
+            if (semanaHora[strSemana] == valueSemana)
+            {
+                return true;
+            }
+        }
+    });
+
+    if (aux.length) {
+        element.innerHTML = aux[0].materia;
+        element.style = 'background-color: #c3d6cc;';
+    } else 
+    {
+        element.innerHTML = '';
+        element.style = 'background-color: #d2edfc;';
+    }
 
 }
 
