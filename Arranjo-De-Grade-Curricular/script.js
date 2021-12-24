@@ -25,9 +25,11 @@ function objProf (e)
             semanaHora: smna(formData), 
         };  
 
-        palavra.push (newObj);
+        palavra.push(newObj);
         form.reset();
-        newCard (newObj);
+        newCard(newObj);
+        // salvando a casa insercao
+        localStorage.setItem('palavra', JSON.stringify(palavra))
     }catch (e)
     {
         console.log(e);
@@ -70,6 +72,8 @@ function newCard (obj)
     card.appendChild(cardBody);
 
     cardContainer.appendChild(card);
+
+    btnRemov.addEventListener('click', removerCard);
 }
 function newCard_str_smna(card)
 {
@@ -116,6 +120,8 @@ function getNome()
     {
         alert('Acabaram as senhas')
     }
+    // inserir indice
+    localStorage.setItem('indice', JSON.stringify(alf_I))
     return alf[alf_I];
 }
 
@@ -590,6 +596,7 @@ btnstorage.addEventListener('click', setStorage);
 
 function setStorage ()
 {
+    localStorage.setItem('indice', JSON.stringify(alf_I))
     localStorage.setItem('palavra', JSON.stringify(palavra))
 }
 
@@ -633,6 +640,7 @@ palavra.push({nome:"R", materia:"METODOLOGIA DA PESQUISA NA COMPUTAÇÃO", prof:
 window.onload = function ()
 {
     palavra = getStorage();
+    alf_I = localStorage.getItem('indice') || -1;
     //setData();
     initCards();
     removerClick();
@@ -663,6 +671,7 @@ function removerCard (e)
     {
         palavra[alf_I].nome = alf[alf_I];
     }
+    alf_I--;
 
     const cardContainer = document.getElementById('cardscontainer');
     cardContainer.innerText = '';
@@ -670,4 +679,6 @@ function removerCard (e)
     removerClick();
     setStorage();
 
+
 }
+
