@@ -7,19 +7,32 @@ form.addEventListener("submit", objProf);
 
 function objProf (e)
 {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    let newObj = {
-        nome: getNome(),
-        materia: formData.get("nomemateria"), 
-        prof: formData.get("professor"), 
-        cred: parseInt(formData.get("creditos")),
-        semanaHora: smna(formData), 
-    };  
+    try
+    {
+        e.preventDefault();
+        const formData = new FormData(e.target);
 
-    palavra.push (newObj);
-    form.reset();
-    newCard (newObj);
+        if (!formData.get("nomemateria") || !formData.get("professor") || !parseInt(formData.get("creditos")))
+        {
+            throw "Formulario Nao preenchido completamente";
+        }
+
+        let newObj = {
+            nome: getNome(),
+            materia: formData.get("nomemateria"), 
+            prof: formData.get("professor"), 
+            cred: parseInt(formData.get("creditos")),
+            semanaHora: smna(formData), 
+        };  
+
+        palavra.push (newObj);
+        form.reset();
+        newCard (newObj);
+    }catch (e)
+    {
+        console.log(e);
+    }
+    
 }
 
 function newCard (obj)
@@ -31,21 +44,29 @@ function newCard (obj)
     const title = document.createElement('h5');
     const subTitle = document.createElement('h6');
     const p = document.createElement('p');
+    const btnRemov = document.createElement('button');
 
+  
     card.classList.value = 'card margin-card';
     card.style = 'width: 18rem';
     cardBody.classList.value = 'card-body';
     title.classList.value = 'card-title';
     subTitle.classList.value = 'card-subtitle mb-2 text-muted'; 
     p.classList.value = 'card-text';
+    btnRemov.type = "button";
+    btnRemov.name = obj.nome;
+    btnRemov.classList = "btn btn-outline-danger btn-sm";
+    btnRemov.id = 'remov';
     
     title.innerHTML = obj.prof;
     subTitle.innerHTML = obj.materia;
     p.innerHTML = newCard_str_smna(obj);
+    btnRemov.innerHTML = 'remover';
 
     cardBody.appendChild(title);
     cardBody.appendChild(subTitle);
     cardBody.appendChild(p);
+    cardBody.appendChild(btnRemov);
     card.appendChild(cardBody);
 
     cardContainer.appendChild(card);
@@ -302,6 +323,7 @@ function newTable (obj)
     card.style = "width: 18rem";
     ul.classList.value = 'list-group list-group-flush';
 
+
     li0.classList.add('list-group-item');
     li1.classList.add('list-group-item');
     li2.classList.add('list-group-item');
@@ -314,6 +336,7 @@ function newTable (obj)
     li2.innerHTML = `${obj[2].materia} <br> cred: ${obj[2].cred}`;
     li3.innerHTML = `${obj[3].materia} <br> cred: ${obj[3].cred}`;
     li4.innerHTML = `${obj[4].materia} <br> cred: ${obj[4].cred}`;
+
 
     /*Make Lista tateral a tabela */
     ul.appendChild(li0);
@@ -562,13 +585,6 @@ function colorTable (element, row, obj, strSemana, valueSemana)
 }
 
 
-window.onload = function ()
-{
-    palavra = getStorage();
-    setData();
-    initCards();
-};
-
 const btnstorage = document.getElementById('storage');
 btnstorage.addEventListener('click', setStorage);
 
@@ -601,15 +617,57 @@ function setData ()
 palavra.push({nome:"A", materia:"INTERFACE HOMEM-MÁQUINA" , prof:"Prof desconhecido",cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
 palavra.push({nome:"B", materia:"FILOSOFIA, TECNOLOGIA E ÉTICA", prof:"Prof desconhecido" ,cred: 4, semanaHora: {segunda: 17, terca: 0, quarta: 0, quinta: 17, sexta: 0}});
 palavra.push({nome:"C", materia:"LINGUAGENS FORMAIS E AUTÔMATOS", prof:"Prof desconhecido" ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
-palavra.push({nome:"D", materia:"CIRCUITOS ELÉTRICOS I x" ,cred: 4, prof:"Prof desconhecido" , semanaHora: {segunda: 0, terca: 1, quarta: 1, quinta: 0, sexta: 1}});
-palavra.push({nome:"E", materia:"TEOLOGIA, CIÊNCIAS EXATAS E TECNOLÓGICAS" ,cred: 4, prof:"Prof desconhecido" , semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}});
-palavra.push({nome:"K", materia:"EQUAÇÕES DIFERENCIAIS" ,cred: 4, prof:"Prof desconhecido" , semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
-palavra.push({nome:"L", materia:"GERÊNCIA DE PROJETOS DE SISTEMAS", prof:"Prof desconhecido"  ,cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 1}});
-palavra.push({nome:"M", materia:"VALIDAÇÃO E TESTES DE SISTEMAS", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
-palavra.push({nome:"N", materia:"COMPUTAÇÃO GRÁFICA", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
-palavra.push({nome:"O", materia:"INTELIGÊNCIA ARTIFICIAL", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 1, terca: 0, quarta: 0, quinta: 1, sexta: 0}});
-palavra.push({nome:"P", materia:"SISTEMAS DISTRIBUÍDOS", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 0, terca: 1, quarta: 0, quinta: 0, sexta: 1}});
-palavra.push({nome:"Q", materia:"PROCESSAMENTO DIGITAL DE IMAGENS", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}});
-palavra.push({nome:"Q", materia:"METODOLOGIA DA PESQUISA NA COMPUTAÇÃO", prof:"Prof desconhecido"  ,cred: 6, semanaHora: {segunda: 73, terca: 0, quarta: 0, quinta: 73, sexta: 0}});
+palavra.push({nome:"D", materia:"CIRCUITOS ELÉTRICOS I", cred: 6, prof:"Prof desconhecido" , semanaHora: {segunda: 0, terca: 1, quarta: 1, quinta: 0, sexta: 1}});
+palavra.push({nome:"E", materia:"TEOLOGIA, CIÊNCIAS EXATAS E TECNOLÓGICAS", cred: 4, prof:"Prof desconhecido" , semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}});
+palavra.push({nome:"K", materia:"EQUAÇÕES DIFERENCIAIS" ,cred: 4, prof:"Prof desconhecido", semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
+palavra.push({nome:"L", materia:"GERÊNCIA DE PROJETOS DE SISTEMAS", prof:"Prof desconhecido", cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 1}});
+palavra.push({nome:"M", materia:"VALIDAÇÃO E TESTES DE SISTEMAS", prof:"Prof desconhecido", cred: 6, semanaHora: {segunda: 17, terca: 0, quarta: 17, quinta: 17, sexta: 0}});
+palavra.push({nome:"N", materia:"COMPUTAÇÃO GRÁFICA", prof:"Prof desconhecido", cred: 4, semanaHora: {segunda: 0, terca: 17, quarta: 0, quinta: 0, sexta: 17}});
+palavra.push({nome:"O", materia:"INTELIGÊNCIA ARTIFICIAL", prof:"Prof desconhecido", cred: 4, semanaHora: {segunda: 1, terca: 0, quarta: 0, quinta: 1, sexta: 0}});
+palavra.push({nome:"P", materia:"SISTEMAS DISTRIBUÍDOS", prof:"Prof desconhecido"  ,cred: 4, semanaHora: {segunda: 0, terca: 1, quarta: 0, quinta: 0, sexta: 1}});
+palavra.push({nome:"Q", materia:"PROCESSAMENTO DIGITAL DE IMAGENS", prof:"Prof desconhecido", cred: 4, semanaHora: {segunda: 0, terca: 73, quarta: 0, quinta: 0, sexta: 73}});
+palavra.push({nome:"R", materia:"METODOLOGIA DA PESQUISA NA COMPUTAÇÃO", prof:"Prof desconhecido", cred: 4, semanaHora: {segunda: 73, terca: 0, quarta: 0, quinta: 73, sexta: 0}});
+
+}
+
+window.onload = function ()
+{
+    palavra = getStorage();
+    //setData();
+    initCards();
+    removerClick();
+};
+function removerClick ()
+{
+    /** Deletar card */
+    const btnRemov = document.querySelectorAll('#remov');
+    btnRemov.forEach((e) => e.addEventListener('click', removerCard));
+}
+function removerCard (e)
+{
+    /// remover da tela
+
+    /// remover do local storage
+
+    const card = e.target.name; 
+    
+    let i = 0;
+    for (i=0; i<palavra.length && palavra[i].nome !== card; i++)
+    {}
+    palavra.splice(i, 1);
+
+    console.log('Removido: ',palavra[i]);
+
+    alf_I = 0;
+    for (alf_I=0; alf_I<palavra.length; alf_I++)
+    {
+        palavra[alf_I].nome = alf[alf_I];
+    }
+
+    const cardContainer = document.getElementById('cardscontainer');
+    cardContainer.innerText = '';
+    initCards();
+    removerClick();
+    setStorage();
 
 }
