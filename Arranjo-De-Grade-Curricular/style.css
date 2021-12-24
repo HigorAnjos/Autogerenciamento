@@ -46,7 +46,7 @@ header
 {
     display: flex;
     border: white solid 2px;
-    width: 375px;
+    min-width: 300px;
     padding: 5px 10px;
 }
 #cardscontainer
@@ -56,7 +56,7 @@ header
     flex-wrap: wrap;
 
     border:aquamarine solid 2px;
-    width: 1070px;
+
     padding: 30px;
 }
 #row
