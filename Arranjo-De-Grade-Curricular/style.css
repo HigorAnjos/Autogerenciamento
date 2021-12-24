@@ -75,3 +75,6 @@ header
 .card-title, .card-subtitle, .card-text {
     color: #262626;
 }
+#cards-background {
+    background-color: aquamarine;
+}
